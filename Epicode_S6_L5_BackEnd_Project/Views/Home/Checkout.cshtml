@@ -1,0 +1,36 @@
+﻿@model Epicode_S6_L5_BackEnd_Project.Models.Checkout
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<div class="container">
+    <h2>Checkout Cliente</h2>
+
+    <dl class="dl-horizontal">
+        <dt>Codice Fiscale Cliente:</dt>
+        <dd>@Model.NomeTitolare</dd>
+
+        <dt>Numero Stanza:</dt>
+        <dd>@Model.NumeroStanza</dd>
+
+        <dt>Data Check-In:</dt>
+        <dd>@Model.DataCheckIn.ToShortDateString()</dd>
+
+        <dt>Data Check-Out:</dt>
+        <dd>@Model.DataCheckOut.ToShortDateString()</dd>
+
+        <dt>Tariffa Applicata:</dt>
+        <dd>@Model.TariffaApplicata.ToString("C")</dd>
+
+        <dt>Importo da Saldare:</dt>
+        <dd>@Model.ImportoDaSaldare.ToString("C")</dd>
+    </dl>
+
+
+    <button class="mb-3 btn btn-default btn-warning">Stampa Fattura</button>
+    <div>
+        <p class="m-0"><strong>Il cliente non vuole pagare *Easter egg*</strong></p>
+        <a href="https://www.linkedin.com/in/marco-puccio/" class="mt-1 btn btn-default btn-danger">Chiama 112</a>
+    </div>
+</div>
