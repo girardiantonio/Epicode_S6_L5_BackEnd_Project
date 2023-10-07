@@ -145,7 +145,7 @@ namespace Epicode_S6_L5_BackEnd_Project.Models
 
                             SelectListItem item = new SelectListItem
                             {
-                                Value = idCamera.ToString(),
+                                Value = numeroCamera.ToString(),
                                 Text = text
                             };
 
@@ -158,5 +158,37 @@ namespace Epicode_S6_L5_BackEnd_Project.Models
             return camereDisponibili;
         }
 
+        public List<Camera> ListaCamera()
+        {
+            List<Camera> camere = new List<Camera>();
+
+            using (SqlConnection sqlConnection = new SqlConnection(GetConnectionString()))
+            {
+                sqlConnection.Open();
+
+                string query = "SELECT * FROM Camere";
+
+                using (SqlCommand cmd = new SqlCommand(query, sqlConnection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Camera camera = new Camera
+                            {
+                                IdCamera = Convert.ToInt32(reader["IdCamera"]),
+                                NumeroCamera = Convert.ToInt32(reader["NumeroCamera"]),
+                                Descrizione = reader["Descrizione"].ToString(),
+                                Tipo = reader["Tipo"].ToString(),
+                                Stato = reader["Stato"].ToString()
+                            };
+
+                            camere.Add(camera);
+                        }
+                    }
+                }
+            }
+            return camere;
+        }
     }
 }

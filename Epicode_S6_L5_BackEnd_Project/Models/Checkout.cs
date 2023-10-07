@@ -13,6 +13,7 @@ namespace Epicode_S6_L5_BackEnd_Project.Models
         public DateTime DataCheckIn { get; set; }
         public DateTime DataCheckOut { get; set; }
         public decimal TariffaApplicata { get; set; }
+        public decimal CaparraConfirmatoria { get; set; }
         public List<ServizioAggiuntivo> ServiziAggiuntivi { get; set; }
         public decimal ImportoDaSaldare { get; set; }
     }

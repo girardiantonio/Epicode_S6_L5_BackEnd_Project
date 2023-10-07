@@ -24,5 +24,12 @@ namespace Epicode_S6_L5_BackEnd_Project.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult ListaCamera()
+        {
+            var camera = new Camera().ListaCamera();
+            return View(camera);
+        }
     }
 }

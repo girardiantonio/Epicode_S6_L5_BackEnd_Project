@@ -23,7 +23,20 @@
         <dt>Tariffa Applicata:</dt>
         <dd>@Model.TariffaApplicata.ToString("C")</dd>
 
-        <dt>Importo da Saldare:</dt>
+        <dt>Caparra Confirmatoria:</dt>
+        <dd>@Model.CaparraConfirmatoria.ToString("C")</dd>
+
+        <dt>Servizi Aggiuntivi acquistati:</dt>
+        <dd>
+            <ul class="m-0 p-0">
+                @foreach (var servizio in Model.ServiziAggiuntivi)
+                {
+                    <li class="m-0 p-0 list-unstyled">@servizio.ServiziAggiuntivi Tipo: @servizio.Servizio , In Data: @servizio.DataServizio , Quantità: @servizio.Quantita , Prezzo: @servizio.Prezzo €</li>
+                }
+            </ul>
+        </dd>
+
+        <dt>Importo da Saldare (Tariffa – caparra + Servizi aggiuntivi):</dt>
         <dd>@Model.ImportoDaSaldare.ToString("C")</dd>
     </dl>
 

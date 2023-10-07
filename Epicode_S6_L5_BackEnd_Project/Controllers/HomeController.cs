@@ -93,13 +93,17 @@ namespace Epicode_S6_L5_BackEnd_Project.Controllers
 
             decimal importoDaSaldare = prenotazione.TariffaApplicata - prenotazione.CaparraConfirmatoria + importoServiziAggiuntivi;
 
+            List<ServizioAggiuntivo> serviziAggiuntivi = ServizioAggiuntivo.GetServiziAggiuntiviByIdPrenotazione(IdPrenotazione);
+
             Checkout checkoutModel = new Checkout
             {
                 NomeTitolare = prenotazione.CodiceFiscale,
                 NumeroStanza = prenotazione.NumeroCamera,
                 DataCheckIn = prenotazione.DataInizioSoggiorno,
                 DataCheckOut = prenotazione.DataFineSoggiorno,
+                CaparraConfirmatoria = prenotazione.CaparraConfirmatoria,
                 TariffaApplicata = prenotazione.TariffaApplicata,
+                ServiziAggiuntivi = serviziAggiuntivi,
                 ImportoDaSaldare = importoDaSaldare
             };
 

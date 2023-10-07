@@ -4,60 +4,58 @@
     ViewBag.Title = "ListaServizioAggiuntivo";
 }
 
-<h2>ListaServizioAggiuntivo</h2>
+<div>
+    <h2 class="text-center">Lista dei servizi Acquistati</h2>
+    <div style="overflow-x: auto; overflow-y: auto">
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdServizio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Servizio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataServizio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantita)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prezzo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdPrenotazione)
+                </th>
+                <th>Azioni</th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdServizio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Servizio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataServizio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Quantita)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prezzo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdPrenotazione)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdServizio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Servizio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataServizio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantita)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prezzo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdPrenotazione)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modifica", "ModificaServizioAggiuntivo", new { IdServizio = item.IdServizio }, new { @class = "btn btn-warning btn-sm mx-1" })
+                        @Html.ActionLink("Elimina", "EliminaServizioAggiuntivo", new { IdServizio = item.IdServizio, IdPrenotazione = item.IdPrenotazione }, new { @class = "btn btn-danger btn-sm mx-1" })
+                    </td>
+                </tr>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdServizio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Servizio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataServizio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantita)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezzo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdPrenotazione)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>

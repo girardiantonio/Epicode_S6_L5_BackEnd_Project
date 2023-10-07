@@ -21,8 +21,6 @@ namespace Epicode_S6_L5_BackEnd_Project.Controllers
             return View(model);
         }
 
-
-
         [HttpPost]
         public ActionResult CreaPrenotazione(Prenotazione model)
         {

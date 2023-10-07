@@ -49,7 +49,7 @@
                 @Html.ActionLink("Aggiungi Servizio", "CreaServizioAggiuntivo", "ServizioAggiuntivo", new { IdPrenotazione = Model.IdPrenotazione, CodiceFiscale = Model.CodiceFiscale }, new { @class = "btn btn-success btn-sm" })
             </div>
             <div style="margin-right: 10px">
-                @Html.ActionLink("Visualizza Servizi Aggiuntivi", "ListaServizio", "Servizio", new { IdCliente = Model.IdPrenotazione }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Visualizza Servizi Aggiuntivi", "ListaServizioAggiuntivo", "ServizioAggiuntivo", new { IdPrenotazione = Model.IdPrenotazione }, new { @class = "btn btn-info btn-sm" })
             </div>
             <div style="margin-right: 10px">
                 <a href="@Url.Action("Checkout", "Home", new { IdPrenotazione = Model.IdPrenotazione })" class="btn btn-primary">Checkout Cliente</a>

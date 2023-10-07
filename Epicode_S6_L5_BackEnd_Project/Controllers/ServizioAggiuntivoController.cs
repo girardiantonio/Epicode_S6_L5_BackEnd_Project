@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,15 +19,32 @@ namespace Epicode_S6_L5_BackEnd_Project.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreaServizioAggiuntivo(ServizioAggiuntivo model)
+        public ActionResult CreaServizioAggiuntivo(ServizioAggiuntivo model, int IdPrenotazione)
         {
+            model.IdPrenotazione = IdPrenotazione;
+            
             if (ModelState.IsValid)
             {
                 model.InserisciServizioAggiuntivo();
-                return RedirectToAction("ListaServizioAggiuntivo");
+                return RedirectToAction("ListaServizioAggiuntivo", new { IdPrenotazione });
             }
             return View(model);
         }
+
+        public ActionResult EliminaServizioAggiuntivo(ServizioAggiuntivo model, int IdServizio, int IdPrenotazione)
+        {
+            model.IdPrenotazione = IdPrenotazione;
+
+            var servizio = new ServizioAggiuntivo().GetServizioAggiuntivoById(IdServizio);
+
+            if (servizio != null)
+            {
+                servizio.EliminaServizioAggiuntivo();
+            }
+
+            return RedirectToAction("ListaServizioAggiuntivo", new { IdPrenotazione });
+        }
+
 
         [HttpGet]
         public ActionResult DettaglioServizioAggiuntivo(int IdServizio)
@@ -39,5 +57,14 @@ namespace Epicode_S6_L5_BackEnd_Project.Controllers
             }
             return HttpNotFound();
         }
+
+        [HttpGet]
+        public ActionResult ListaServizioAggiuntivo(int IdPrenotazione)
+        {
+            List<ServizioAggiuntivo> serviziAggiuntivi = ServizioAggiuntivo.GetServiziAggiuntiviByIdPrenotazione(IdPrenotazione);
+
+            return View(serviziAggiuntivi);
+        }
+
     }
 }

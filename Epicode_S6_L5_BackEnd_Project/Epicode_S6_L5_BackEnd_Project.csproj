@@ -156,7 +156,10 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\imgs\logo.png" />
     <Content Include="Content\imgs\sfondo1.jpg" />
+    <Content Include="Content\imgs\sfondo2.jpg" />
     <Content Include="Content\imgs\sfondo3.jpg" />
+    <Content Include="Content\imgs\sfondo4.jpg" />
+    <Content Include="Content\imgs\sfondo5.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -203,6 +206,7 @@
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Cliente\ModificaCliente.cshtml" />
     <Content Include="Views\Camera\CreaCamera.cshtml" />
+    <Content Include="Views\Camera\ListaCamera.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
